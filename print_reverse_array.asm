@@ -8,6 +8,7 @@
 .data
 	array: .word 1 2 3 4 5 6 7 8 9 10
 	cout: .asciiz "The contents of the array in reverse order are:\n"
+	newline: .asciiz "\n"
 
 .text
 printA:
@@ -26,6 +27,10 @@ printLoop:
 	li $v0, 1					#print element at that index
 	syscall
     
+	la $a0, newline
+	li $v0, 4
+	syscall
+
 	sub $t0, $t0, $t2			#decrement to next index
 	sub $a1, $a1, $t1			#decrement index
 
